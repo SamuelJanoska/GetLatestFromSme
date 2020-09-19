@@ -15,8 +15,8 @@ public class GetLatestFromSmeClass {
 
     WebDriver driver;
 
-
-    public void main (String[] args){
+    @Test
+    public void main (){
 
 
         System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver.exe");
