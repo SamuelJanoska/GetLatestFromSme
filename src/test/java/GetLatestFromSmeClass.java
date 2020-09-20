@@ -2,6 +2,7 @@
 import org.junit.Test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.time.LocalTime;
 
 public class GetLatestFromSmeClass {
@@ -43,12 +45,16 @@ public class GetLatestFromSmeClass {
 
         int comparison = TimeFromRightBox.compareTo(TimeFromLeftBox);
 
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         if(comparison>0){
             System.out.println("Most recent update is from " + TimeFromRightBox + " and is from sportbox");
+            js.executeScript("alert('Most recent update is from " + TimeFromRightBox + " and is from sportbox')");
+            JOptionPane.showMessageDialog(null, "Most recent update is from " + TimeFromRightBox + " and is from sportbox");
         }
         else{
             System.out.println("Most recent update is from " + TimeFromLeftBox + " and is from home and world news box");
-
+            js.executeScript("alert('Most recent update is from " + TimeFromLeftBox + " and is from world and home news box')");
+            JOptionPane.showMessageDialog(null, "Most recent update is from " + TimeFromLeftBox + " and is from home and world news box");
         }
 
 
