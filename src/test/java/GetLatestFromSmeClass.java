@@ -31,8 +31,10 @@ public class GetLatestFromSmeClass {
 
         WebElement paneSplit = driver.findElement(By.xpath("//div[contains(@class, 'cf teraz-box teraz-box_sidebar')]"));
 
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, 'cf teraz-box teraz-box_sidebar')]")));
+        new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, 'cf teraz-box teraz-box_sidebar')]")));
 
+
+        new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='js-now-box-items-5']/ul/li[1]/div/span[1]/time")));
         WebElement StringFromLeftBox = paneSplit.findElement(By.xpath("//*[@id='js-now-box-items-5']/ul/li[1]/div/span[1]/time"));
         LocalTime TimeFromLeftBox =  LocalTime.parse(StringFromLeftBox.getText()) ;
 
