@@ -45,19 +45,26 @@ public class GetLatestFromSmeClass {
 
         int comparison = TimeFromRightBox.compareTo(TimeFromLeftBox);
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+
         if(comparison>0){
-            System.out.println("Most recent update is from " + TimeFromRightBox + " and is from sportbox");
-            js.executeScript("alert('Most recent update is from " + TimeFromRightBox + " and is from sportbox')");
+            jsActions(StringFromRightBox);
+            System.out.println("Most recent update is from " + TimeFromRightBox + " and is from sportbox. It's been highlighted yellow for you.");
+            //js.executeScript("alert('Most recent update is from " + TimeFromRightBox + " and is from sportbox. It has been highlighted yellow for you.')");
             JOptionPane.showMessageDialog(null, "Most recent update is from " + TimeFromRightBox + " and is from sportbox");
         }
         else{
-            System.out.println("Most recent update is from " + TimeFromLeftBox + " and is from home and world news box");
-            js.executeScript("alert('Most recent update is from " + TimeFromLeftBox + " and is from world and home news box')");
-            JOptionPane.showMessageDialog(null, "Most recent update is from " + TimeFromLeftBox + " and is from home and world news box");
+            jsActions(StringFromLeftBox);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            System.out.println("Most recent update is from " + TimeFromLeftBox + " and is from home and world news box. It's been highlighted yellow for you.");
+            js.executeScript("alert('Most recent update is from " + TimeFromLeftBox + " and is from world and home news box. It has been highlighted yellow for you.')");
+            //JOptionPane.showMessageDialog(null, "Most recent update is from " + TimeFromLeftBox + " and is from home and world news box. It's been highlighted yellow for you.");
         }
+    }
 
-
+    private void jsActions(WebElement stringFromRightBox) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView()", stringFromRightBox);
+        js.executeScript("arguments[0].style.backgroundColor='yellow'", stringFromRightBox);
     }
 
 }
